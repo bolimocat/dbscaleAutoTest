@@ -1,0 +1,45 @@
+create database mytest111;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+create table mytest111.tb(id int primary key auto_increment,value varchar(6));
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+select * from mytest111.tb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+insert into mytest111.tb(value) values ("my");
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+insert into mytest111.tb(value) values ("your");
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+select * from mytest111.tb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+id	value
+1	my
+2	your
+
+
+update mytest111.tb set value = "Tana" where id = 2;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+delete from mytest111.tb where id = 1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+select * from mytest111.tb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+id	value
+2	Tana
+
+
+drop database mytest111;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+

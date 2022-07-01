@@ -1,0 +1,108 @@
+scene 1
+zento caseid : 3480
+test on dbscale : 192.168.2.22
+test type : function
+test case sql : ./testcase/deletelimit/mynew.sql
+test expect file : ./testexpect/deletelimit/mynew.out
+test current file : ./testcurrent/deletelimit/mynew.out.result
+test err info :
+current:[ line:1, ]
+expect: [ line:1,create database mytest; ]
+current:[ line:5, ]
+expect: [ line:5,create table mytest.tb(id int primary key auto_increment,value varchar(6)); ]
+current:[ line:9, ]
+expect: [ line:9,select * from mytest.tb; ]
+current:[ line:13, ]
+expect: [ line:13,insert into mytest.tb(value) values ("my"); ]
+current:[ line:17, ]
+expect: [ line:17,insert into mytest.tb(value) values ("your"); ]
+current:[ line:21, ]
+expect: [ line:21,select * from mytest.tb; ]
+current:[ line:23, ]
+expect: [ line:23,id	value ]
+current:[ line:24, ]
+expect: [ line:24,1	my ]
+current:[ line:25, ]
+expect: [ line:25,2	your ]
+current:[ line:26,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:26, ]
+current:[ line:28, ]
+expect: [ line:28,update mytest.tb set value = "Tana" where id = 2; ]
+current:[ line:29, ]
+expect: [ line:29,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+current:[ line:30,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:30, ]
+current:[ line:32, ]
+expect: [ line:32,delete from mytest.tb where id = 1; ]
+current:[ line:33, ]
+expect: [ line:33,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+current:[ line:34,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:34, ]
+current:[ line:36, ]
+expect: [ line:36,select * from mytest.tb; ]
+current:[ line:37, ]
+expect: [ line:37,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+current:[ line:38,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:38,id	value ]
+current:[ line:39, ]
+expect: [ line:39,2	Tana ]
+current:[ line:42,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:42,drop database mytest; ]
+current:[ line:43, ]
+expect: [ line:43,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+
+
+scene 4
+zento caseid : 3488
+test on dbscale : 192.168.2.21
+test type : function
+test case sql : ./testcase/deletelimit/yourtest.sql
+test expect file : ./testexpect/deletelimit/yourtest.out
+test current file : ./testcurrent/deletelimit/yourtest.out.result
+test err info :
+current:[ line:1, ]
+expect: [ line:1,create database mytest111; ]
+current:[ line:5, ]
+expect: [ line:5,create table mytest111.tb(id int primary key auto_increment,value varchar(6)); ]
+current:[ line:9, ]
+expect: [ line:9,select * from mytest111.tb; ]
+current:[ line:13, ]
+expect: [ line:13,insert into mytest111.tb(value) values ("my"); ]
+current:[ line:17, ]
+expect: [ line:17,insert into mytest111.tb(value) values ("your"); ]
+current:[ line:21, ]
+expect: [ line:21,select * from mytest111.tb; ]
+current:[ line:23, ]
+expect: [ line:23,id	value ]
+current:[ line:24, ]
+expect: [ line:24,1	my ]
+current:[ line:25, ]
+expect: [ line:25,2	your ]
+current:[ line:26,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:26, ]
+current:[ line:28, ]
+expect: [ line:28,update mytest111.tb set value = "Tana" where id = 2; ]
+current:[ line:29, ]
+expect: [ line:29,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+current:[ line:30,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:30, ]
+current:[ line:32, ]
+expect: [ line:32,delete from mytest111.tb where id = 1; ]
+current:[ line:33, ]
+expect: [ line:33,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+current:[ line:34,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:34, ]
+current:[ line:36, ]
+expect: [ line:36,select * from mytest111.tb; ]
+current:[ line:37, ]
+expect: [ line:37,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+current:[ line:38,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:38,id	value ]
+current:[ line:39, ]
+expect: [ line:39,2	Tana ]
+current:[ line:42,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+expect: [ line:42,drop database mytest111; ]
+current:[ line:43, ]
+expect: [ line:43,mysql: [Warning] Using a password on the command line interface can be insecure. ]
+
+

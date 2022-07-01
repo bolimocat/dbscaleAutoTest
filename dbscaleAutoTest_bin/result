@@ -1,0 +1,97 @@
+Cluster 4.0 Auto Test suit
+读取配置文件的go
+properties : ./file/properties
+host : 192.168.2.21
+dbscale的节点上创建需要的目录
+向 192.168.2.21 发送casefile
+向 192.168.2.21 发送casefile over!
+向 192.168.2.21 发送casefile
+向 192.168.2.21 发送casefile over!
+向 192.168.2.21 发送casefile
+向 192.168.2.21 发送casefile over!
+向 192.168.2.21 发送expressfile
+向 192.168.2.21 发送expressfile over!
+向 192.168.2.21 发送expressfile
+向 192.168.2.21 发送expressfile over!
+向 192.168.2.21 发送expressfile
+向 192.168.2.21 发送expressfile over!
+host : 192.168.2.22
+dbscale的节点上创建需要的目录
+向 192.168.2.22 发送casefile
+向 192.168.2.22 发送casefile over!
+向 192.168.2.22 发送casefile
+向 192.168.2.22 发送casefile over!
+向 192.168.2.22 发送casefile
+向 192.168.2.22 发送casefile over!
+向 192.168.2.22 发送expressfile
+向 192.168.2.22 发送expressfile over!
+向 192.168.2.22 发送expressfile
+向 192.168.2.22 发送expressfile over!
+向 192.168.2.22 发送expressfile
+向 192.168.2.22 发送expressfile over!
+host : 192.168.2.23
+dbscale的节点上创建需要的目录
+向 192.168.2.23 发送casefile
+向 192.168.2.23 发送casefile over!
+向 192.168.2.23 发送casefile
+向 192.168.2.23 发送casefile over!
+向 192.168.2.23 发送casefile
+向 192.168.2.23 发送casefile over!
+向 192.168.2.23 发送expressfile
+向 192.168.2.23 发送expressfile over!
+向 192.168.2.23 发送expressfile
+向 192.168.2.23 发送expressfile over!
+向 192.168.2.23 发送expressfile
+向 192.168.2.23 发送expressfile over!
+host : 192.168.2.24
+dbscale的节点上创建需要的目录
+向 192.168.2.24 发送casefile
+向 192.168.2.24 发送casefile over!
+向 192.168.2.24 发送casefile
+向 192.168.2.24 发送casefile over!
+向 192.168.2.24 发送casefile
+向 192.168.2.24 发送casefile over!
+向 192.168.2.24 发送expressfile
+向 192.168.2.24 发送expressfile over!
+向 192.168.2.24 发送expressfile
+向 192.168.2.24 发送expressfile over!
+向 192.168.2.24 发送expressfile
+向 192.168.2.24 发送expressfile over!
+执行场景：   1,3480,root,123456,192.168.2.22,16310,/home/greatdb,deletelimit,test.sql,test.out,TRUE,dbscale:a=2||mysql:b=3,
+本场景需要修改dbscale和mysql的配置
+停止dbscale 和 mysql角色
+停止： 192.168.2.21 上的dbscale.
+停止： 192.168.2.22 上的dbscale.
+停止： 192.168.2.23 上的dbscale.
+停止： 192.168.2.24 上的dbscale.
+完成所有节点dbscale的停止.
+启动 all 角色
+启动： 192.168.2.21 上的dbscale.
+/dbscale/daemon/dbscale_daemon.py
+启动： 192.168.2.22 上的dbscale.
+/dbscale/daemon/dbscale_daemon.py
+启动： 192.168.2.23 上的dbscale.
+/dbscale/daemon/dbscale_daemon.py
+启动： 192.168.2.24 上的dbscale.
+/dbscale/daemon/dbscale_daemon.py
+完成所有节点dbscale的启动.
+执行场景：   2,3481,root,123456,192.168.2.23,16310,/home/greatdb,deletelimit,test1.sql,test1.out,TRUE,dbscale:a=2||null,
+本场景需要修改dbscale的配置
+停止dbscale角色
+停止： 192.168.2.21 上的dbscale.
+停止： 192.168.2.22 上的dbscale.
+停止： 192.168.2.23 上的dbscale.
+停止： 192.168.2.24 上的dbscale.
+完成所有节点dbscale的停止.
+启动dbscale角色
+启动： 192.168.2.21 上的dbscale.
+/dbscale/daemon/dbscale_daemon.py
+启动： 192.168.2.22 上的dbscale.
+/dbscale/daemon/dbscale_daemon.py
+启动： 192.168.2.23 上的dbscale.
+/dbscale/daemon/dbscale_daemon.py
+启动： 192.168.2.24 上的dbscale.
+/dbscale/daemon/dbscale_daemon.py
+完成所有节点dbscale的启动.
+执行场景：   3,3481,root,123456,192.168.2.21,16310,/home/greatdb,deletelimit,test2.sql,test2.out,TRUE,null||null,
+本场景不需要修改dbscale或mysql的配置
