@@ -17,6 +17,7 @@ import (
 func main(){
 	fmt.Println("Cluster 4.0 Auto Test suit")
 	var scene_info []string = load.Loadscene("./testscene/sceneinfo.csv")
+	var attachment_info []string = load.Loadattachment("./testscene/sceneinfo.csv")
 	var properties_info []string = load.Loadproperties("./file/properties")
 	var dbscale_host string
 	var user string
@@ -95,6 +96,7 @@ func main(){
 			remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/testresult")
 			remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/testexpect")
 			remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/interface")
+			remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/file")
 			
 			for _,v := range casefilelist {
 				remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/testcase/"+strings.Split(v, ":")[0])
@@ -108,6 +110,10 @@ func main(){
 				remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/testresult/"+strings.Split(v, ":")[0])
 			}
 			
+			for _,v := range expressfilelist {
+				remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/file/"+strings.Split(v, ":")[0])
+			}
+			
 			for _,casename := range casefilelist {
 				transmit.Upload(user, password, value, 22,"./testcase/"+strings.Split(casename, ":")[0]+"/"+strings.Split(casename, ":")[1],testroot+testpath+"/testcase/"+strings.Split(casename, ":")[0],"/"+strings.Split(casename, ":")[1],"向 "+value+" 发送casefile")
 				
@@ -115,6 +121,14 @@ func main(){
 			
 			for _,expressname := range expressfilelist{
 				transmit.Upload(user, password, value, 22,"./testexpect/"+strings.Split(expressname, ":")[0]+"/"+strings.Split(expressname, ":")[1],testroot+testpath+"/testexpect/"+strings.Split(expressname, ":")[0],"/"+strings.Split(expressname, ":")[1],"向 "+value+" 发送expressfile")
+			}
+			
+			for _,attachname := range attachment_info{
+				fmt.Println(user, password, value, 22, "./file/"+strings.Split(attachname, ",")[7]+"/"+strings.Split(attachname, ",")[12], testroot+testpath+"/file/"+strings.Split(attachname, ",")[7]+"/"+strings.Split(attachname, ",")[12],strings.Split(attachname, ",")[12], "向 "+value+" 发送attache")
+//				fmt.Println("-- "+"./file/"+strings.Split(attachname, ",")[7]+"/"+strings.Split(attachname, ",")[12])
+//				fmt.Println(testroot+testpath+"/file/"+strings.Split(attachname, ",")[7]+"/"+strings.Split(attachname, ",")[12])
+				transmit.Upload(user, password, value, 22, "./file/"+strings.Split(attachname, ",")[7]+"/"+strings.Split(attachname, ",")[12], testroot+testpath+"/file/"+strings.Split(attachname, ",")[7],strings.Split(attachname, ",")[12], "向 "+value+" 发送attache")
+				
 			}
 		}
 	
@@ -142,15 +156,30 @@ func main(){
 				fmt.Println("按行执行function用例")
 			
 				caselist := load.Loadcase("./testcase/"+exe_info[7]+"/"+exe_info[8])
-				for _,value := range caselist {
-					remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '"+value+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
-					remote.Nodemission(exe_info[2], password, exe_info[4], 22, "sed -i \"s/\\x0//g\" "+testroot+testpath+"/testcase/"+exe_info[7]+"/"+exe_info[8])
-					remote.Nodemission(exe_info[2], password, exe_info[4], 22, "mysql -uroot -p"+exe_info[3]+" -h"+exe_info[4]+" -P"+exe_info[5]+" -e '"+value+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result" +" 2>&1"  )
-					remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '\n' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
+				for _,value := range caselist {	//load all testcase from the file,then split the string in every line for judge the first posation is sql or sys.
+					if strings.Split(value, ":")[0] == "sql"{
+						//record the content of execution in fact
+						fmt.Println("test sql stmt : "+strings.Split(value, ":")[1])
+						remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '"+strings.Split(value, ":")[1]+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
+						remote.Nodemission(exe_info[2], password, exe_info[4], 22, "sed -i \"s/\\x0//g\" "+testroot+testpath+"/testcase/"+exe_info[7]+"/"+exe_info[8])
+						remote.Nodemission(exe_info[2], password, exe_info[4], 22, "mysql -uroot -p"+exe_info[3]+" -h"+exe_info[4]+" -P"+exe_info[5]+" -e '"+strings.Split(value, ":")[1]+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result" +" 2>&1"  )
+						remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '\n' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
 					//get the execute result from remote host by current build
 					transmit.Download(exe_info[2],exe_info[4],testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result","./testcurrent/"+exe_info[7]);
-
-
+					}
+//					fmt.Println("test sql stmt : "+value)
+//					remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '"+value+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
+//					remote.Nodemission(exe_info[2], password, exe_info[4], 22, "sed -i \"s/\\x0//g\" "+testroot+testpath+"/testcase/"+exe_info[7]+"/"+exe_info[8])
+//					remote.Nodemission(exe_info[2], password, exe_info[4], 22, "mysql -uroot -p"+exe_info[3]+" -h"+exe_info[4]+" -P"+exe_info[5]+" -e '"+value+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result" +" 2>&1"  )
+//					remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '\n' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
+//					//get the execute result from remote host by current build
+//					transmit.Download(exe_info[2],exe_info[4],testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result","./testcurrent/"+exe_info[7]);
+				
+					if strings.Split(value, ":")[0] == "sys"{
+						fmt.Println("执行系统操作，包括重启，停机等相关...")
+					}
+					
+				
 				}
 				
 				remote.Nodemission(exe_info[2], password, exe_info[4], 22, "sed -i \"s/\\x0//g\" "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result")
@@ -160,7 +189,10 @@ func main(){
 				fmt.Println("按行执行interface用例")
 //					fmt.Println(" ---- "+exe_info[2], password, exe_info[4], 22, "java -jar "+testroot+testpath+"/interface/dbscaleJdbc.jar "+testroot+testpath+"/testcase/"+exe_info[7]+"/"+exe_info[8]);
 //					local.Interfacejdbc("./interface", "java -jar ./dbscaleJdbc.jar ", "./testcase/jdbc/jdbc_createtb")
+				if exe_info[7] == "jdbc" {
+					fmt.Println("执行jdbc测试")
 					
+				}	
 			}
 			if exe_info[11] == "stable" {
 				fmt.Println("按行执行stable用例")
@@ -177,7 +209,7 @@ func main(){
 
 			expectfile = load.Loadexpect("./testexpect/"+exe_info[7]+"/"+exe_info[9])
 			currentfile = load.Loadcurrent("./testcurrent/"+exe_info[7]+"/"+exe_info[9]+".result")
-			
+//			fmt.Println("currentfile length : "+strconv.Itoa(len(currentfile)))
 			testresult := test.Testcase(expectfile, currentfile)
 			if len(testresult) != 0{
 				local.Recordresult("scene "+exe_info[0])

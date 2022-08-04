@@ -23,7 +23,7 @@ func Loadcase(casefile string) []string{
 func HandleTextCase(textfile string) ([]string,error) {	//返回切片和error信息
     file, err := os.Open(textfile)
     	var infoSlice []string =make([]string,0)
-    	var case_info string
+//    	var case_info string
     if err != nil {
         log.Printf("Cannot open text file: %s, err: [%v]", textfile, err)
         return infoSlice,err
@@ -38,10 +38,10 @@ func HandleTextCase(textfile string) ([]string,error) {	//返回切片和error�
 	     
 	     
 	     //加载操作
-	     if (!strings.Contains(line,"--"))||(line != ""){
-	     	//加载欲操作
-//	     	case_info = strings.Split(line,":")[1]
-	     	infoSlice = append(infoSlice,case_info)
+		  if (!strings.HasPrefix(line, "--")&&!(len(line)==0)){//只要语句不以“--”开头，就都存入队列
+		     //加载欲操作
+//	     	infoSlice = append(infoSlice,strings.Split(line,":")[1])
+			infoSlice = append(infoSlice,line)
 		 }
 	 }
 

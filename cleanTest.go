@@ -5,10 +5,12 @@ import (
 	load "dbscaleAutoTest/load"
 	"strings"
 	remote "dbscaleAutoTest/remote"
+	local "dbscaleAutoTest/local"
 )
 
 func main(){
 	var properties_info []string = load.Loadproperties("./file/properties")
+	var scene_info []string = load.Loadscene("./testscene/sceneinfo.csv")
 	var dbscale_host string
 	var user string
 	var password string
@@ -16,6 +18,7 @@ func main(){
 	var testpath string
 	var rootpass string
 	var uif []string = make([]string,7)
+	var currentfilelist []string = make([]string,0)
 	
 	for index,value := range properties_info{
 		if value != "" {
@@ -46,6 +49,21 @@ func main(){
 			
 		}
 	}
+	
+	for _,value := range scene_info{
+		if value != "" {
+			casefile_info := strings.Split(value, ",")
+			currentfilelist = append(currentfilelist,casefile_info[7]+"/"+casefile_info[9]+".result")
+		}
+	}
+	
+	//clean current test and result
+//	local.Delcurrentfile("testcurrent/")
+	for _,value := range currentfilelist{
+		local.Delcurrentfile(value)
+	}
+	
+	local.Mvresult()
 	
 	//clean test path
 	host := strings.Split(dbscale_host, ",")

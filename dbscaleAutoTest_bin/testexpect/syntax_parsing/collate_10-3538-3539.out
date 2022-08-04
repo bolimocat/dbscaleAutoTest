@@ -1,0 +1,60 @@
+dbscale set global "use-partial-parse" = 1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+create database test1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+use test1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+create table test1.tb_alter (id int primary key auto_increment,c1 varchar(12) );
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+select TABLE_NAME,COLLATION_NAME,DATA_TYPE from information_schema.columns where table_schema = "test1" and table_name = "test1.tb_alter";
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+alter table  test1.tb_alter change column c1 ca varchar(6) character set utf8mb4 collate utf8mb4_bin;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+select TABLE_NAME,COLLATION_NAME,DATA_TYPE from information_schema.columns where table_schema = "test1" and table_name = "test1.tb_alter";
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+drop database test1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+create database test1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+use test1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+create table test1.tb_alter(id int primary key auto_increment,c1 varchar(12) );
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+select TABLE_NAME,COLLATION_NAME,DATA_TYPE from information_schema.columns where table_schema = "test1" and table_name = "test1.tb_alter";
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+alter table  test1.tb_alter change column c1 ca  varchar(6) character set utf8mb4 collate utf8mb4_general_ci;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+select TABLE_NAME,COLLATION_NAME,DATA_TYPE from information_schema.columns where table_schema = "test1" and table_name = "test1.tb_alter";
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+drop database test1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+

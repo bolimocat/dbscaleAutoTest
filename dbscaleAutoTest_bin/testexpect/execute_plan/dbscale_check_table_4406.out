@@ -1,0 +1,22 @@
+create database `test-t-db1`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+dbscale dynamic add normal_table dataspace `test-t-db1`.`test-t3` datasource = "normal_0";
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+create table `test-t-db1`.`test-t3` (id int primary key, name varchar(10), time TIMESTAMP);
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+dbscale check table `test-t-db1`.`test-t3`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+TABLE_NAME	CHECK_RESULT
+test-t-db1.test-t3	OK
+
+
+drop database `test-t-db1`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+

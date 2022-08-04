@@ -50,9 +50,10 @@ id	name
 5	Gofe
 
 
-select count(*) from ( select id,name from test.tb_intkey FORCE INDEX( pri ) order by id DESC limit 5) test.tb_intkey where (id = 3);
+select count(*) from ( select id,name from test.tb_intkey FORCE INDEX( pri ) order by id DESC limit 5) tb_intkey where (id = 3);
 mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.tb_intkey where (id = 3)' at line 1
+count(*)
+1
 
 
 drop table test.tb_intkey;
@@ -103,9 +104,10 @@ id	name
 5.1	Gofe
 
 
-select count(*) from ( select name from test.tb_floatkey FORCE INDEX( pri ) order by id DESC limit 4) test.tb_floatkey where (id = 3.1);
+select count(*) from ( select id,name from test.tb_floatkey FORCE INDEX( pri ) order by id DESC limit 4) tb_floatkey where (id = 3.1);
 mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.tb_floatkey where (id = 3.1)' at line 1
+count(*)
+1
 
 
 drop table test.tb_floatkey;
@@ -156,9 +158,10 @@ id	name
 3	Tom
 
 
-select count(*) from ( select name from test.tb_charkey FORCE INDEX( pri ) order by id DESC limit 4) test.tb_charkey where (name = "Nicuhe");
+select count(*) from ( select name from test.tb_charkey FORCE INDEX( pri ) order by id DESC limit 4) tb_charkey where (name = "Nicuhe");
 mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.tb_charkey where (name = "Nicuhe")' at line 1
+count(*)
+1
 
 
 drop table test.tb_charkey;
@@ -209,9 +212,10 @@ id	name
 5	Gofe
 
 
-select count(*) from ( select id,weight,name,content from test.tb_unionkey FORCE INDEX( pri ) order by id DESC limit 4) test.tb_unionkey where (content = "son");
+select count(*) from ( select id,weight,name,content from test.tb_unionkey FORCE INDEX( pri ) order by id DESC limit 4) tb_unionkey where (content = "son");
 mysql: [Warning] Using a password on the command line interface can be insecure.
-ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.tb_unionkey where (content = "son")' at line 1
+count(*)
+1
 
 
 drop table test.tb_unionkey;

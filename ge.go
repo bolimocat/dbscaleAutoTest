@@ -16,12 +16,16 @@ import (
 func main(){
 	var casesql string
 	var caseout string
+	var attachfile string
 	
 	//加载参数：top文件位置和pid号
 	for index,value := range os.Args{
 //		fmt.Println("arg[] :"+value)
 		if index == 1 {
 			casesql = value
+		}
+		if index == 2 {
+			attachfile = value
 		}
 
 	}
@@ -66,21 +70,25 @@ func main(){
 		
 		realcasesql := strings.Split(casesql, "/")
 		realcaseout := strings.Split(caseout, "/")
-
 		
-		transmit.Transmit(user, password, dbscale_host, 22,casesql,"/tmp",casesql,"向 "+dbscale_host+" 发送sql")
-
+		transmit.Upload(user, password, dbscale_host, 22,casesql,"/tmp",casesql,"向 "+dbscale_host+" 发送sql")
+		
+		if attachfile != "" {
+			transmit.Upload(user, password, dbscale_host, 22, attachfile, "/tmp", attachfile, "向 "+dbscale_host+" 发送 "+attachfile)
+		}
 		
 //		执行sql
 		caselist := load.Loadcase(casesql)
 		for _,value := range caselist {
-//			fmt.Println(" -- "+value)
-			remote.Nodemission(user, password, dbscale_host, 22, "echo '"+value+"' >> /tmp/"+realcaseout[len(realcaseout)-1]  )
-//			fmt.Println("mysql -uroot -p"+dbscalepass+" -h"+dbscale_host+" -P"+port+" -e '"+value+" ' >> /tmp/"+realcaseout[len(realcaseout)-1]  )
-			remote.Nodemission(user, password, dbscale_host, 22, "mysql -uroot -p"+dbscalepass+" -h"+dbscale_host+" -P"+port+" -e '"+value+"' >> /tmp/"+realcaseout[len(realcaseout)-1] +" 2>&1"  )	
+//			fmt.Println(" -- "+strings.Split(value, ":")[1])
+			remote.Nodemission(user, password, dbscale_host, 22, "echo '"+strings.Split(value, ":")[1]+"' >> /tmp/"+realcaseout[len(realcaseout)-1]  )
+			fmt.Println("mysql  --binary-mode=1 -uroot -p"+dbscalepass+" -h"+dbscale_host+" -P"+port+" -e '"+strings.Split(value, ":")[1]+" ' >> /tmp/"+realcaseout[len(realcaseout)-1]  )
+			remote.Nodemission(user, password, dbscale_host, 22, "mysql -uroot -p"+dbscalepass+" -h"+dbscale_host+" -P"+port+" -e '"+strings.Split(value, ":")[1]+"' >> /tmp/"+realcaseout[len(realcaseout)-1] +" 2>&1"  )	
 			remote.Nodemission(user, password, dbscale_host, 22, "echo '\n' >> /tmp/"+realcaseout[len(realcaseout)-1]   )
 		}
 		remote.Nodemission(user, password, dbscale_host, 22, "sed -i \"s/\\x0//g\" /tmp/"+realcasesql[len(realcasesql)-1])
+		
+		
 
 		
 	}

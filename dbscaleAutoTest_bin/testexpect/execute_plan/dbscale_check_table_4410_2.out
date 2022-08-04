@@ -1,0 +1,20 @@
+alter table `test-t-db2`.`test-t5` change  COLUMN name name_a varchar(20);
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+alter table `test-t-db2_dbscale_1_5`.`test-t5` change  COLUMN name name_a varchar(20);
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+show create table `test-t-db2`.`test-t5`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Table	Create Table
+test-t5	CREATE TABLE `test-t5` (\n  `id` int(11) NOT NULL,\n  `name_a` varchar(20) DEFAULT NULL,\n  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
+show create table `test-t-db2_dbscale_1_5`.`test-t5`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Table	Create Table
+test-t5	CREATE TABLE `test-t5` (\n  `id` int(11) NOT NULL,\n  `name_a` varchar(20) DEFAULT NULL,\n  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n  PRIMARY KEY (`id`)\n) ENGINE=InnoDB DEFAULT CHARSET=latin1
+
+
