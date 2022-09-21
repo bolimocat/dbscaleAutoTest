@@ -1,0 +1,600 @@
+第 0 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 480s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 944s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1427s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 1117s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 945s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 617s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 882s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 466s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 470s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 792s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 470s	Not_A_Master	1	root	22		0
+
+
+第 1 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 485s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 953s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1441s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 255s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal, catching master 954s	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 954s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 958s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 958s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 958s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 623s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 627s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 891s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 627s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 471s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 475s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 800s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 475s	Not_A_Master	1	root	22		0
+
+
+第 2 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 490s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 962s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1454s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 258s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 963s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 967s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 967s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 967s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 629s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 633s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 898s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 476s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 480s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 807s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 480s	Not_A_Master	1	root	22		0
+
+
+第 3 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 494s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 971s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1468s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 260s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 972s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 976s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 976s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 635s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 907s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 484s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 489s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 815s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 489s	Not_A_Master	1	root	22		0
+
+
+第 4 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 498s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 979s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1481s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 1159s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 981s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 984s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 984s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 984s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 640s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 644s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 914s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 491s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 495s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 822s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 495s	Not_A_Master	1	root	22		0
+
+
+第 5 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 502s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 988s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 739s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 265s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 989s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 993s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 993s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 993s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 646s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 650s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 922s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 650s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 496s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 500s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 829s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 500s	Not_A_Master	1	root	22		0
+
+
+第 6 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 507s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 996s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1507s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 267s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 998s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1002s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1002s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1002s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 651s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 655s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 930s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 656s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 499s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 503s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 836s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 504s	Not_A_Master	1	root	22		0
+
+
+第 7 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 511s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1005s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 752s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 269s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1006s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1010s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1010s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 658s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 662s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 938s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 504s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 508s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 843s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 508s	Not_A_Master	1	root	22		0
+
+
+第 8 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 517s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1016s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 760s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 273s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1017s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1021s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1021s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1021s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 666s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 670s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 948s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 670s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 510s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 514s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 852s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 514s	Not_A_Master	1	root	22		0
+
+
+第 9 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 523s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1026s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1553s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 276s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1028s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1032s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 673s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 957s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 515s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 519s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 861s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 519s	Not_A_Master	1	root	22		0
+
+
+第 0 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 586s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1149s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 863s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 312s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1153s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1157s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1158s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 759s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 763s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1074s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 577s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 581s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 966s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 581s	Not_A_Master	1	root	22		0
+
+
+第 1 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 590s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1158s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1753s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 314s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1161s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1165s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1165s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1165s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 764s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 769s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1081s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 769s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 581s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 585s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 973s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 585s	Not_A_Master	1	root	22		0
+
+
+第 2 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 594s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1166s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 876s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 1383s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1170s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1174s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1174s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1174s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 770s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 774s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 403s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 774s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 585s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 589s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 980s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 589s	Not_A_Master	1	root	22		0
+
+
+第 3 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 598s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1175s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 882s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 1393s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1179s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1183s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1183s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 776s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1096s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 780s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 589s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 593s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 987s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 593s	Not_A_Master	1	root	22		0
+
+
+第 4 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 603s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1183s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 889s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 322s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1188s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1192s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1192s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1192s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 782s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 787s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1105s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 786s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 593s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 597s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 994s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 597s	Not_A_Master	1	root	22		0
+
+
+第 5 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 607s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1192s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 1805s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 324s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1196s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1200s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1200s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1200s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 788s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 792s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1113s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 792s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 597s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 601s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 1001s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 601s	Not_A_Master	1	root	22		0
+
+
+第 6 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 611s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1200s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 902s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 327s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1205s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1209s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 794s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 798s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1121s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 798s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 601s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 605s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 1009s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 605s	Not_A_Master	1	root	22		0
+
+
+第 7 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 616s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1209s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 909s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 329s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1214s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 800s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 804s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1129s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 804s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 605s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 609s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 1016s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 609s	Not_A_Master	1	root	22		0
+
+
+第 8 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 620s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1217s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 916s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 1444s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1222s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1226s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1226s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 806s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1138s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal, catching master 810s	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 610s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 614s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 1023s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 614s	Not_A_Master	1	root	22		0
+
+
+第 9 轮测试
+dbscale show dataservers; 
+mysql: [Warning] Using a password on the command line interface can be insecure.
+servername	host	port	username	status	master-online-status	master_backup	remote_user	remote_port	max_needed_conn/max_mysql_conn	master_priority
+auth_0_0	172.16.76.34	16319	dbscale_internal	Server normal	Master_Online	1	root	22		0
+auth_0_1	172.16.76.31	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_2	172.16.76.33	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+auth_0_3	172.16.76.32	16319	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_0	172.16.76.34	16318	dbscale_internal	Server normal	Master_Online	1	root	22		0
+global_0_1	172.16.76.31	16318	dbscale_internal	Slave normal, catching master 624s	Not_A_Master	1	root	22		0
+global_0_2	172.16.76.33	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+global_0_3	172.16.76.32	16318	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+normal_0_0	172.16.76.34	16315	dbscale_internal	Slave normal, catching master 1226s	Master_Online	1	root	22		0
+normal_0_1	172.16.76.31	16315	dbscale_internal	Slave normal, catching master 922s	Not_A_Master	1	root	22		0
+normal_0_2	172.16.76.33	16315	dbscale_internal	Slave normal, catching master 333s	Not_A_Master	1	root	22		0
+normal_0_3	172.16.76.32	16315	dbscale_internal	Slave normal, catching master 1233s	Not_A_Master	1	root	22		0
+par_0_0	172.16.76.31	16320	dbscale_internal	Slave normal, catching master 1231s	Master_Online	1	root	22		0
+par_0_1	172.16.76.34	16320	dbscale_internal	Slave normal, catching master 1235s	Not_A_Master	1	root	22		0
+par_0_2	172.16.76.33	16320	dbscale_internal	Slave normal, catching master 1235s	Not_A_Master	1	root	22		0
+par_0_3	172.16.76.32	16320	dbscale_internal	Slave normal, catching master 1235s	Not_A_Master	1	root	22		0
+par_1_0	172.16.76.33	16321	dbscale_internal	Slave normal, catching master 811s	Master_Online	1	root	22		0
+par_1_1	172.16.76.34	16321	dbscale_internal	Slave normal, catching master 815s	Not_A_Master	1	root	22		0
+par_1_2	172.16.76.31	16321	dbscale_internal	Slave normal, catching master 1145s	Not_A_Master	1	root	22		0
+par_1_3	172.16.76.32	16321	dbscale_internal	Slave normal	Not_A_Master	1	root	22		0
+par_2_0	172.16.76.32	16322	dbscale_internal	Slave normal, catching master 614s	Master_Online	1	root	22		0
+par_2_1	172.16.76.34	16322	dbscale_internal	Slave normal, catching master 618s	Not_A_Master	1	root	22		0
+par_2_2	172.16.76.31	16322	dbscale_internal	Slave normal, catching master 1030s	Not_A_Master	1	root	22		0
+par_2_3	172.16.76.33	16322	dbscale_internal	Slave normal, catching master 618s	Not_A_Master	1	root	22		0
+
+
