@@ -30,8 +30,8 @@ func asyncLog1(reader io.ReadCloser) error {
 
 func ControlDb(dir string,commandname string,parameter string) error {
 	
-	 cmd := exec.Command("sh", "-c", dir+"/"+commandname+" -c "+parameter)
-		fmt.Println("-----sh", "-c", dir+"/"+commandname+" -c "+parameter)		
+	 cmd := exec.Command("sh", "-c", dir+"/"+commandname+"  "+parameter)
+		fmt.Println("-----sh", "-c", dir+"/"+commandname+"  "+parameter)		
 		stdout, _ := cmd.StdoutPipe()
 		stderr, _ := cmd.StderrPipe()
 

@@ -1,220 +1,258 @@
-
+create database test;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+use test
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+create table test.tb_intkey(id int primary key,name varchar(6));
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_intkey (id,name) values (1,"Tana");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_intkey (id,name) values (2,"Nicuhe");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_intkey (id,name) values (3,"Tom");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_intkey (id,name) values (4,"Jerry");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_intkey (id,name) values (5,"Gofe");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select id,name from test.tb_intkey;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select id,name from test.tb_intkey force index(PRI);
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select count(*) from ( select id,name from test.tb_intkey FORCE INDEX( pri ) order by id DESC limit 5) tb_intkey where (id = 3);
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+drop table test.tb_intkey;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+create table test.tb_floatkey(id float(2,1) primary key,name varchar(6));
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_floatkey (id,name) values (1.1,"Tana");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_floatkey (id,name) values (2.1,"Nicuhe");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_floatkey (id,name) values (3.1,"Tom");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_floatkey (id,name) values (4.1,"Jerry");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_floatkey (id,name) values (5.1,"Gofe");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select id,name from test.tb_floatkey;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select id,name from test.tb_floatkey force index(PRI);
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select count(*) from ( select id,name from test.tb_floatkey FORCE INDEX( pri ) order by id DESC limit 4) tb_floatkey where (id = 3.1);
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+drop table test.tb_floatkey;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+create table test.tb_charkey(id int,name varchar(6)  primary key);
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_charkey (id,name) values (1,"Tana");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_charkey (id,name) values (2,"Nicuhe");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_charkey (id,name) values (3,"Tom");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_charkey (id,name) values (4,"Jerry");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_charkey (id,name) values (5,"Gofe");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select id,name from test.tb_charkey;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select id,name from test.tb_charkey force index(PRI);
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select count(*) from ( select name from test.tb_charkey FORCE INDEX( pri ) order by id DESC limit 4) tb_charkey where (name = "Nicuhe");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+drop table test.tb_charkey;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+create table test.tb_unionkey(id int,weight float(2,1) ,name varchar(6),content text , primary key(id,weight,name));
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_unionkey (id,weight,name,content) values (1,2.2,"Tana","daughter");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_unionkey (id,weight,name,content) values (2,1.0,"Nicuhe","son");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_unionkey (id,weight,name,content) values (3,0.2,"Tom","my cat");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_unionkey (id,weight,name,content) values (4,0.1,"Jerry","a rat");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+insert into test.tb_unionkey (id,weight,name,content) values (5,9.9,"Gofe","puppy");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select id,name from test.tb_unionkey;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select id,name from test.tb_unionkey force index(PRI);
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+select count(*) from ( select id,weight,name,content from test.tb_unionkey FORCE INDEX( pri ) order by id DESC limit 4) tb_unionkey where (content = "son");
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+drop table test.tb_unionkey;
 mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 
-
+drop database test;
 mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
-
-
-
-mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '172.16.76.31')
+mysql: [ERROR] mysql: Error while setting value '172.16.76.31' to 'port'
 
 

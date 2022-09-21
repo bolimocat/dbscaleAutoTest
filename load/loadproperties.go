@@ -59,6 +59,11 @@ func HandleTextProperties(textfile string) ([]string,error) {	//返回切片和e
 //	     	dbscale_host := strings.Split(line,"=")
 	     	infoSlice = append(infoSlice,""+line)
 		}
+	      if strings.Contains(line,"ALL_HOST"){
+	     	//加载欲操作
+//	     	dbscale_host := strings.Split(line,"=")
+	     	infoSlice = append(infoSlice,""+line)
+		}
 	     if strings.Contains(line, "TESTROOT"){
 	     	infoSlice = append(infoSlice,""+line)
 	     }

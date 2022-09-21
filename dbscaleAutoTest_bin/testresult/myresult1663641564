@@ -1,0 +1,20 @@
+scene 52
+zento caseid : 3481
+test on dbscale : 192.168.2.22
+test type : function
+test case sql : ./testcase/jdbc/createtb
+test expect file : ./testexpect/jdbc/createtb.out
+test current file : ./testcurrent/jdbc/createtb.out.result
+The test is no wrong!
+
+
+scene 53
+zento caseid : 3482
+test on dbscale : 192.168.2.22
+test type : function
+test case sql : ./testcase/jdbc/inserttb
+test expect file : ./testexpect/jdbc/inserttb.out
+test current file : ./testcurrent/jdbc/inserttb.out.result
+The test is no wrong!
+
+
