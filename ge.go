@@ -1,5 +1,6 @@
 //ge for Generate expectations 
-//使用方法：./ge ./testcase/jdbc/test1.sql
+//使用方法：./ge ./testcase/jdbc/test1.sql 执行脚本中不用上传附件的方式
+//使用方法：./ge ./testcase/jdbc/test1.sql  pathcfile 执行脚本需要上传附件，自动传入/tmp下，实际执行时注意修改预期文件和结果文件中附件的位置。
 package main
 
 
@@ -82,7 +83,7 @@ func main(){
 		for _,value := range caselist {
 //			fmt.Println(" -- "+strings.Split(value, ":")[1])
 			remote.Nodemission(user, password, dbscale_host, 22, "echo '"+strings.Split(value, ":")[1]+"' >> /tmp/"+realcaseout[len(realcaseout)-1]  )
-			fmt.Println("mysql  --binary-mode=1 -uroot -p"+dbscalepass+" -h"+dbscale_host+" -P"+port+" -e '"+strings.Split(value, ":")[1]+" ' >> /tmp/"+realcaseout[len(realcaseout)-1]  )
+			fmt.Println("mysql -uroot -p"+dbscalepass+" -h"+dbscale_host+" -P"+port+" -e '"+strings.Split(value, ":")[1]+" ' >> /tmp/"+realcaseout[len(realcaseout)-1]  )
 			remote.Nodemission(user, password, dbscale_host, 22, "mysql -uroot -p"+dbscalepass+" -h"+dbscale_host+" -P"+port+" -e '"+strings.Split(value, ":")[1]+"' >> /tmp/"+realcaseout[len(realcaseout)-1] +" 2>&1"  )	
 			remote.Nodemission(user, password, dbscale_host, 22, "echo '\n' >> /tmp/"+realcaseout[len(realcaseout)-1]   )
 		}

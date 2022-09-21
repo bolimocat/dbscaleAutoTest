@@ -29,8 +29,8 @@ func asyncLog2(reader io.ReadCloser) error {
 
 func Interfacejdbc(dir string,commandname string,parameter string) error {
 	
-	 cmd := exec.Command("sh", "-c", dir+"/"+commandname+" "+parameter)
-		fmt.Println("-----sh", "-c", dir+"/"+commandname+"  "+parameter)		
+	 cmd := exec.Command("sh", "-c", dir+" "+commandname+" "+parameter)
+		fmt.Println("-----sh", "-c", dir+" "+commandname+"  "+parameter)		
 		stdout, _ := cmd.StdoutPipe()
 		stderr, _ := cmd.StderrPipe()
 
