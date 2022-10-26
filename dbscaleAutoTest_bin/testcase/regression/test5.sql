@@ -1,1 +1,0 @@
-dbscale show dataservers;

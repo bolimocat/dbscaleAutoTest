@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-//	"time"
+	"time"
 	"strconv"
 	"strings"
 	_ "github.com/go-sql-driver/mysql"
@@ -10,11 +10,11 @@ import (
 	remote "dbscaleAutoTest/remote"		
 	transmit "dbscaleAutoTest/transmit" 
 	load "dbscaleAutoTest/load"
-//	local "dbscaleAutoTest/local"
+	local "dbscaleAutoTest/local"
 //	test "dbscaleAutoTest/test"
 	base "dbscaleAutoTest/database"
 	execute "dbscaleAutoTest/execute"
-//	tool "dbscaleAutoTest/tool"
+	tool "dbscaleAutoTest/tool"
 
 )
 
@@ -30,8 +30,11 @@ func main(){
 	var testroot string 
 	var testpath string
 	var rootpass string
-//	var casefolder string
-//	var caseinfo string
+	var healthnode int //集群正常时节点数量
+	var washfile string
+//	var scenenum int //场景数
+//	scenenum = len(scene_info)
+	var currentscene int
 	var uif []string = make([]string,0)
 	var casefilelist []string = make([]string,0) //以用例文件（scene.csv[8]）的分片集合
 	var expressfilelist []string = make([]string,0) //以预期文件（scene.csv[9]）的分片集合	
@@ -87,7 +90,7 @@ func main(){
 		host := strings.Split(all_host, ",")
 		for _,value := range host {
 			//在每个dbscale的节点上创建测试目录，存放测试用例
-			fmt.Println("dbscale的节点上创建需要的目录")
+			fmt.Println("在 "+value+" dbscale的节点上创建需要的目录")
 			remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath)
 			remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/testcase")
 			remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/testresult")
@@ -115,25 +118,25 @@ func main(){
 			for _,v := range expressfilelist {
 				remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/testexpect/"+strings.Split(v, ":")[0])
 			}
-			
+			//从已有的预期文件分片列表，在每个dbscale所在节点上创建测试结果文件目录
 			for _,v := range expressfilelist {
 				remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/testresult/"+strings.Split(v, ":")[0])
 			}
-			
+			//从已有的预期文件分片列表，在每个dbscale所在节点上创建附件文件目录
 			for _,v := range expressfilelist {
 				remote.Nodemission(user, password, value, 22, "mkdir -p "+testroot+testpath+"/file/"+strings.Split(v, ":")[0])
 			}
 			
-//			chown -R greatdb:greatdb
+			//向每个目标节点上发送本次场景的测试用例sql文件
 			for _,casename := range casefilelist {
 				transmit.Upload(user, password, value, 22,"./testcase/"+strings.Split(casename, ":")[0]+"/"+strings.Split(casename, ":")[1],testroot+testpath+"/testcase/"+strings.Split(casename, ":")[0],"/"+strings.Split(casename, ":")[1],"向 "+value+" 发送casefile")
 				
 			}
-			
+			//向每个目标节点上发送本次场景的测试预期out文件
 			for _,expressname := range expressfilelist{
 				transmit.Upload(user, password, value, 22,"./testexpect/"+strings.Split(expressname, ":")[0]+"/"+strings.Split(expressname, ":")[1],testroot+testpath+"/testexpect/"+strings.Split(expressname, ":")[0],"/"+strings.Split(expressname, ":")[1],"向 "+value+" 发送expressfile")
 			}
-			
+			//向每个目标节点上发送本次场景中测试需要的外部文件
 			for _,attachname := range attachment_info{
 				transmit.Upload(user, password, value, 22, "./file/"+strings.Split(attachname, ",")[7]+"/"+strings.Split(attachname, ",")[12], testroot+testpath+"/file/"+strings.Split(attachname, ",")[7],strings.Split(attachname, ",")[12], "向 "+value+" 发送attache")
 				
@@ -142,46 +145,41 @@ func main(){
 	
 
 	
-	//读取场景信息
+	//读取场景信息，按行读取，切分每个元素的内容。
+//	将sceneinfo的每行赋值给exe_info，在用","分割：
+//	0：场景编号
+//	1：用例编号，可以对应禅道上的用例编号
+//	2：登录集群或数据库节点的用户名
+//	3：登录集群或数据库节点的用户密码
+//	4：登录的集群或数据库IP
+//	5：登录的集群或数据库的端口
+//	6：暂时没有实际使用
+//	7：用例类型分类，结合bin目录下的用例目录、预期目录、本次实际结果目录等中的内容
+//	8：用例文件名，测试时执行的sql文件
+//	9：预期文件名，名称位置和8一样，扩展名改为out
+//	10：当前行场景状态，TRUE为生效，FALSE为不生效
+//	11：当前行场景的测试类型，function为功能sql测试，interface为接口测试，kill15和disable为对应的高可用测试
+//	12：对应当前测试场景中如果有上传文件，这里写file中的文件名
+	currentscene = 0
 	for _,value := range scene_info{
 		if value != "" {
-			fmt.Println("执行场景：  ",value)
+			
 			exe_info := strings.Split(value, ",")
-//			fmt.Println("exe_info[4] ="+exe_info[4])	//exe ip
-//			fmt.Println("exe_info[2] ="+exe_info[2])	//user
-//			fmt.Println("exe_info[3] ="+exe_info[3])	//pass
-//			fmt.Println("exe_info[5] ="+exe_info[5])	//dbscale port
-//			fmt.Println("exe_info[6] ="+exe_info[6])	//local path
-//			fmt.Println("exe_info[7] ="+exe_info[7])	//case filt
-//			fmt.Println("exe_info[8] ="+exe_info[8])	//case name
-//			fmt.Println("exe_info[9] ="+exe_info[9])	//express name
-//			fmt.Println("exe_info[10] ="+exe_info[10])	//active
-//			fmt.Println("exe_info[11] ="+exe_info[11])	//properties
-
-			//读取场景中的配置状态
-			if exe_info[11] == "function" {
-				execute.FunctionCase(exe_info[7], exe_info[8], exe_info[2], exe_info[4], exe_info[3], exe_info[4], exe_info[9], password, exe_info[0], exe_info[1],testroot,testpath)
-
+			sceneid := exe_info[0]
+			caseid := exe_info[1]
+			dbuser := exe_info[2]
+			dbpass := exe_info[3]
+			dbhost := exe_info[4]
+			dbport := exe_info[5]
+			caseclass := exe_info[7]	//用例分类
+			casename := exe_info[8]
+			expectname := exe_info[9]
+//			active := exe_info[10]
+			casetype := exe_info[11]
+//			attachment := exe_info[12]
+			fmt.Println("执行场景：  ",sceneid,caseid,casename,casetype)
 			
-			}
-			if exe_info[11] == "interface" {
-//				默认创建5个表，以此未为基础执行操作.
-				execute.InterfaseCase(exe_info[4], exe_info[2], exe_info[3], exe_info[5], "5", exe_info[8], exe_info[7],exe_info[0],exe_info[1])
-			}
-			if exe_info[11] == "stable" {
-				fmt.Println("按行执行stable用例")
-			}
-			if exe_info[11] == "stress" {
-				fmt.Println("按行执行stress用例")
-			}
-			
-			if exe_info[11] == "ifcontrol" {
-				fmt.Println("按行执行断网用例")
-				fmt.Println("执行主机 : "+exe_info[4])
-//				ifcontrolIP := strings.Split(strings.Split(exe_info[8], ".")[3], "-")[0]+"."+strings.Split(exe_info[8], ".")[1]+"."+strings.Split(exe_info[8], ".")[2]+"."+strings.Split(exe_info[8], ".")[3]
-				fmt.Println("查询主机 : "+exe_info[4])
-//				conn := fmt.Sprintf("%s:%s@%s(%s:%d)/%s",exe_info[2], "123456", "tcp", exe_info[4], 16310, "dbscale")	
-				conn := fmt.Sprintf("%s:%s@%s(%s:%d)/%s",exe_info[2], "123456", "tcp", exe_info[4], 16310, "dbscale")	
+			conn := fmt.Sprintf("%s:%s@%s(%s:%d)/%s",dbuser, dbpass, "tcp", dbhost, 16310, "dbscale")	
 				db, err := sql.Open("mysql", conn)
 			   defer db.Close()                                            //关闭数据库
 			    err = db.Ping()                                            //连接数据库
@@ -191,76 +189,122 @@ func main(){
 			    } else {
 			        fmt.Println("数据库连接成功")                             //连接成功
 			     }
+			 
+			 
+			
+			 	if currentscene == 0{ //当进入第1个场景时，开始创建测试表和数据规则。
+			 	//创建测试用库
+					base.CreateTestDb(db)
+					//创建表规则和分片规则
+					base.CreateRule(db)
+				 }  
+			 	 
+
+			 
+			 
+			
+			
+			 //获取集群正常时Working状态数量   
+			healthnode = base.FetchHealthWorkingNum(db)
+			
+			//读取场景中的配置状态
+			if casetype == "sysbench" {
+//				init-oltp_read_write-50000-32.sql
+				sysbenchPhase := strings.Split(strings.Split(casename, ".")[0], "-")[0]
+				scriptfile := strings.Split(strings.Split(casename, ".")[0], "-")[1]
+				tbsize := strings.Split(strings.Split(casename, ".")[0], "-")[2]
+				threads := strings.Split(strings.Split(casename, ".")[0], "-")[3]
+				recordfile := "./sysbench/record/"+sceneid+"_"+sysbenchPhase+"_"+scriptfile+"_"+tbsize+"_"+threads+".out"
 				
-				var killedhost string
-				var errnum int
-				for i:=0;i<5;i++{
-					if base.FetchDataserversInfo(db){//judge the dataserver is correct
-						remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '第 "+strconv.Itoa(i)+" '轮测试  >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
-						remote.Nodemission(exe_info[2], password, exe_info[4], 22, "sed -i \"s/\\x0//g\" "+testroot+testpath+"/testcase/"+exe_info[7]+"/"+exe_info[8])
-//						remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '\n' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
-						
-						if strings.Split(strings.Split(exe_info[8], ".")[0], "-")[2] == "master"{//if the node is master,so ifdown the interface on master host
-							killedhost = base.Killdataserversmaster(db, strings.Split(strings.Split(exe_info[8], ".")[0], "-")[1])
-							fmt.Println("全部实例状态恢复，断开端口"+strings.Split(strings.Split(exe_info[8], ".")[0], "-")[1]+"的master节点所在的网络。")
-							remote.Nodemission("root", password, killedhost, 22, "ifcontrol.sh > /dev/null 2>&1 & " )
-							
-							caselist := load.Loadcase("./testcase/"+exe_info[7]+"/"+exe_info[8])
-							for _,value := range caselist {	//load all testcase from the file,then split the string in every line for judge the first posation is sql or sys.
-								if strings.Split(value, ":")[0] == "sql"{
-									//record the content of execution in fact
-									fmt.Println("test sql stmt : "+strings.Split(value, ":")[1])
-									remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '"+strings.Split(value, ":")[1]+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
-									remote.Nodemission(exe_info[2], password, exe_info[4], 22, "sed -i \"s/\\x0//g\" "+testroot+testpath+"/testcase/"+exe_info[7]+"/"+exe_info[8])
-									remote.Nodemission(exe_info[2], password, exe_info[4], 22, "mysql -uroot -p"+exe_info[3]+" -h"+exe_info[4]+" -P"+exe_info[5]+" -e '"+strings.Split(value, ":")[1]+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result" +" 2>&1"  )
-									remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '\n' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
-									//get the execute result from remote host by current build
-									transmit.Download(exe_info[2],exe_info[4],testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result","./testcurrent/"+exe_info[7]);
-								}
-							}
-						}
-						if strings.Split(strings.Split(exe_info[8], ".")[0], "-")[2] == "slave"{
-							killedhost = base.Killdataserverslastslave(db, strings.Split(strings.Split(exe_info[8], ".")[0], "-")[1])
-							fmt.Println("全部实例状态恢复，杀死"+killedhost+"上，端口"+strings.Split(strings.Split(exe_info[8], ".")[0], "-")[1]+"的最后一个slave实例。")
-							remote.Nodemission(user, password, killedhost, 22, "kill_pid.sh  15 "+strings.Split(strings.Split(exe_info[8], ".")[0], "-")[1] )
-							remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '"+strings.Split(value, ":")[1]+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
-						
-						caselist := load.Loadcase("./testcase/"+exe_info[7]+"/"+exe_info[8])
-							for _,value := range caselist {	//load all testcase from the file,then split the string in every line for judge the first posation is sql or sys.
-								if strings.Split(value, ":")[0] == "sql"{
-									//record the content of execution in fact
-									fmt.Println("test sql stmt : "+strings.Split(value, ":")[1])
-									remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '"+strings.Split(value, ":")[1]+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
-									remote.Nodemission(exe_info[2], password, exe_info[4], 22, "sed -i \"s/\\x0//g\" "+testroot+testpath+"/testcase/"+exe_info[7]+"/"+exe_info[8])
-									remote.Nodemission(exe_info[2], password, exe_info[4], 22, "mysql -uroot -p"+exe_info[3]+" -h"+exe_info[4]+" -P"+exe_info[5]+" -e '"+strings.Split(value, ":")[1]+"' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result" +" 2>&1"  )
-									remote.Nodemission(exe_info[2], password, exe_info[4], 22, "echo '\n' >> "+testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result"  )
-									//get the execute result from remote host by current build
-									transmit.Download(exe_info[2],exe_info[4],testroot+testpath+"/testresult/"+exe_info[7]+"/"+exe_info[9]+".result","./testcurrent/"+exe_info[7]);
-								}
-							}
-						
-						}
-						
-						
-					}else{
-						fmt.Println("状态异常，本轮不杀实例进程。")
-						errnum = errnum + 1
+				if sysbenchPhase == "init" {
+					fmt.Println("init sysbench table : ")
+					local.SysbenchInit(scriptfile, dbhost, dbuser, dbpass, tbsize, threads, recordfile)
+				}
+				if sysbenchPhase == "run" {
+					fmt.Println("run sysbench test : ")
+					runtime := strings.Split(strings.Split(casename, ".")[0], "-")[4]
+					time.Sleep(10 * time.Second)
+					washfile = recordfile
+					go local.SysbenchRun(scriptfile, dbhost, dbuser, dbpass, tbsize, threads, runtime, recordfile)
+					
+					
+					
+				}
+				if sysbenchPhase == "stop" {
+					fmt.Println("stop sysbench test : ")
+					local.SysbenchStop()
+					for i:=0;i<360;i++ {
+						tool.WashSysbench(load.Loadsysbench(washfile, 12+i),washfile+".result")
 					}
 				}
 			}
 			
-			if exe_info[11] == "kill15" {
-				loopnum,_ := strconv.Atoi(strings.Split(strings.Split(exe_info[8], ".")[0], "-")[3]) 
-				execute.Hakill15Case(exe_info[4], exe_info[2],user,exe_info[3], password, exe_info[5], exe_info[9], exe_info[8],testroot,testpath,loopnum)
-			}
 			
-			if exe_info[11] == "disable" {
-//			loopnum,_ := strconv.Atoi(strings.Split(strings.Split(exe_info[8], ".")[0], "-")[3]) 
-//			execute.HaDisableCase(exe_info[2],exe_info[3] ,exe_info[4],strings.Split(strings.Split(exe_info[8], ",")[0], "-")[1],strings.Split(strings.Split(exe_info[8], ",")[0], "-")[2],exe_info[2],rootpass,loopnum)
+			if casetype == "function" {
+//				execute.FunctionCase(exe_info[7], exe_info[8], exe_info[2], exe_info[4], exe_info[3], exe_info[4], exe_info[9], password, exe_info[0], exe_info[1],testroot,testpath)
+				execute.FunctionCase(caseclass, casename, dbuser, dbhost, dbpass,dbhost, expectname, password, sceneid, caseid,testroot,testpath)
+			
+			}
+			if casetype == "interface" {
+//				execute.InterfaseCase(exe_info[4], exe_info[2], exe_info[3], exe_info[5], "5", exe_info[8], exe_info[7],exe_info[0],exe_info[1])
+				execute.InterfaseCase(dbhost, dbuser, dbpass, dbport, "5", casename, caseclass,sceneid,caseid)
 				
 			}
-		}
+			if casetype == "stable" {
+				fmt.Println("按行执行stable用例")
+			}
+			if casetype == "stress" {
+				fmt.Println("按行执行stress用例")
+				base.CreateStressDb(db)
+				base.CreateStressRule(db)
 		
+				sysbenchPhase := strings.Split(strings.Split(casename, ".")[0], "-")[0]
+				scriptfile := strings.Split(strings.Split(casename, ".")[0], "-")[1]
+				tbsize := strings.Split(strings.Split(casename, ".")[0], "-")[2]
+				threads := strings.Split(strings.Split(casename, ".")[0], "-")[3]
+				recordfile := "./sysbench/record/"+sceneid+"_"+sysbenchPhase+"_"+scriptfile+"_"+tbsize+"_"+threads+".out"
+				runtime := strings.Split(strings.Split(casename, ".")[0], "-")[4]
+				local.StressRun(scriptfile, dbhost, dbuser, dbpass, tbsize, threads, runtime, recordfile)
+				
+				base.DropStressDb(db)
+				base.DropStressRule(db)
+				
+			}
+			
+			if casetype == "ha"{
+				if caseclass == "ifcontrol" {
+					loopnum,_ :=  strconv.Atoi(strings.Split(strings.Split(casename, ".")[0], "-")[3])   //要被执行断网的次数
+					execute.HaifCase(dbhost, dbuser, dbpass, dbport, password, rootpass, testroot, testpath, caseclass, casename, expectname,loopnum,healthnode)
+				}
+			
+				if caseclass == "kill15" {
+					loopnum,_ := strconv.Atoi(strings.Split(strings.Split(casename, ".")[0], "-")[3]) 
+					execute.Hakill15Case(dbhost, dbuser,user,dbpass, password, dbport, expectname,casename,testroot,testpath,loopnum,healthnode)
+				}
+			
+				if caseclass == "kill9" {
+					loopnum,_ := strconv.Atoi(strings.Split(strings.Split(casename, ".")[0], "-")[3]) 
+					execute.Hakill9Case(dbhost, dbuser,user,dbpass, password, dbport, expectname,casename,testroot,testpath,loopnum,healthnode)
+				}
+			
+				if caseclass == "disable" {
+				loopnum,_ := strconv.Atoi(strings.Split(strings.Split(casename, ".")[0], "-")[3]) 
+				servername := strings.Split(strings.Split(casename,".")[0], "-")[1]
+				rolename := strings.Split(strings.Split(casename,".")[0], "-")[2]
+				execute.HaDisableCase(dbuser,dbpass,dbhost,servername,rolename,loopnum,user,password,dbport,expectname,casename,testroot,testpath)
+				}
+			}
+			
+			
+			
+			currentscene = currentscene + 1
+		if currentscene == len(scene_info)-1 {
+				//在最后一个场景结束后，删除测试表和规则。
+				base.DropTestDb(db)
+				base.DropRule(db)
+		}
+		}
+
 	}
 
 	

@@ -1,0 +1,51 @@
+create database testdb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+CREATE TABLE testdb.tb3 (id int(11) NOT NULL,name varchar(6) DEFAULT NULL,age int(11) DEFAULT NULL,level varchar(8) NOT NULL,PRIMARY KEY (id),UNIQUE KEY name (name)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+desc testdb.tb3;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Field	Type	Null	Key	Default	Extra
+id	int(11)	NO	PRI	NULL	
+name	varchar(6)	YES	UNI	NULL	
+age	int(11)	YES		NULL	
+level	varchar(8)	NO		NULL	
+
+
+set sql_mode = "";LOAD DATA LOCAL INFILE "/home/greatdb//dbscaleAutoTest/file/syntax_parsing/loadfile" INTO TABLE testdb.tb3 (id, name, age);show warnings;show warnings limit 3;show warnings limit 2,4;show warnings limit -2;show warnings limit a;show warnings limit 2,1;show warnings limit a,b;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-2' at line 1
+Level	Code	Message
+Warning	1265	Data truncated for column 'id' at row 1
+Warning	1261	Row 1 doesn't contain data for all columns
+Warning	1261	Row 1 doesn't contain data for all columns
+Warning	1265	Data truncated for column 'id' at row 2
+Warning	1261	Row 2 doesn't contain data for all columns
+Warning	1261	Row 2 doesn't contain data for all columns
+Warning	1265	Data truncated for column 'id' at row 3
+Warning	1261	Row 3 doesn't contain data for all columns
+Warning	1261	Row 3 doesn't contain data for all columns
+Warning	1265	Data truncated for column 'id' at row 4
+Warning	1261	Row 4 doesn't contain data for all columns
+Warning	1261	Row 4 doesn't contain data for all columns
+Warning	1366	Incorrect integer value: '' for column 'id' at row 5
+Warning	1261	Row 5 doesn't contain data for all columns
+Warning	1261	Row 5 doesn't contain data for all columns
+Level	Code	Message
+Warning	1265	Data truncated for column 'id' at row 1
+Warning	1261	Row 1 doesn't contain data for all columns
+Warning	1261	Row 1 doesn't contain data for all columns
+Level	Code	Message
+Warning	1261	Row 1 doesn't contain data for all columns
+Warning	1265	Data truncated for column 'id' at row 2
+Warning	1261	Row 2 doesn't contain data for all columns
+Warning	1261	Row 2 doesn't contain data for all columns
+
+
+drop database testdb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+

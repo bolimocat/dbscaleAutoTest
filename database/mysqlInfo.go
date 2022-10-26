@@ -21,6 +21,26 @@ type Dataservers struct {
 	 master_priority string
 }
 
+//struct of datasource
+type Datasource struct {
+	Name string
+	Type string
+	SourceStatus string
+	LoadBalanceStrategy string
+	MasterSource string
+	SlaveSourceStatus string
+	MasterServer string
+	MasterServerHostInfo string
+	MasterServerStatus string
+	SelectMasterTime string
+	SlaveSource string
+	SlaveServers string
+	SlaveServerHostInfo string
+	SlaveServerStatus string
+}
+
+
+
 func GrantAllToRoot(DB *sql.DB){
 	err := DB.QueryRow("grant all on *.* to root@'%';")
 	if err != nil{
@@ -39,10 +59,11 @@ func NewGlobalDatasource(DB *sql.DB){
 	 fmt.Println("dbscale dynamic add schema dataspace global_db datasource = global_ds; successd")
 }
 
-func FetchDataserversInfo (DB *sql.DB) bool {
+//获取初始正常节点数量
+func FetchHealthWorkingNum(DB *sql.DB) int {
 	fmt.Println("search status from dataservers")
-	rows,err := DB.Query("dbscale show dataservers where status like '%normal%';")
-	var result = false
+	rows,err := DB.Query("dbscale show datasource type = replication where SlaveSourceStatus like  'Working';")
+//	var count = int
 	var count = 0
 	if err != nil{
 		fmt.Println(err)
@@ -50,18 +71,97 @@ func FetchDataserversInfo (DB *sql.DB) bool {
 	defer 	rows.Close()
 	
 	for rows.Next(){
-//		var dataserver Dataservers
-//		rows.Scan(&dataserver.servername,&dataserver.host,&dataserver.port,&dataserver.username,&dataserver.status,&dataserver.master_online_status,&dataserver.master_backup,&dataserver.remote_user,&dataserver.remote_port,&dataserver.max_needed_conn_max_mysql_conn,&dataserver.master_priority)
-//		fmt.Println("servername: "+dataserver.servername+" host: "+dataserver.host+" port: "+dataserver.port+"  username: "+dataserver.username+" status: "+dataserver.status+" master_online_status: "+dataserver.master_online_status)
-		count = count + 1
+		var source Datasource
+		rows.Scan(&source.Name,&source.Type,&source.SourceStatus,&source.LoadBalanceStrategy,&source.MasterSource,&source.SlaveSourceStatus,&source.MasterServer,&source.MasterServerHostInfo,&source.MasterServerStatus,&source.SelectMasterTime,&source.SlaveSource,&source.SlaveSourceStatus,&source.SlaveServers,&source.SlaveServerHostInfo,&source.SlaveServerStatus)
+//	&dataserver.servername,&dataserver.host,&dataserver.port,&dataserver.username,&dataserver.status,&dataserver.master_online_status,&dataserver.master_backup,&dataserver.remote_user,&dataserver.remote_port,&dataserver.max_needed_conn_max_mysql_conn,&dataserver.master_priority
+//		fmt.Println(source.Name+" "+source.MasterServerHostInfo+" "+source.SlaveSourceStatus)
+		if source.SlaveSourceStatus == "Working" {
+			count = count + 1
+		}
 	}
-	if count == 24{
+	return count
+}
+
+//获取当前正常节点数量
+func FetchCurrentWorkingNum(DB *sql.DB) int {
+	fmt.Println("search status from dataservers")
+	rows,err := DB.Query("dbscale show datasource type = replication where SlaveSourceStatus like  'Working';")
+//	var count = int
+	var count = 0
+	if err != nil{
+		fmt.Println(err)
+	}
+	defer 	rows.Close()
+	
+	for rows.Next(){
+		var source Datasource
+		rows.Scan(&source.Name,&source.Type,&source.SourceStatus,&source.LoadBalanceStrategy,&source.MasterSource,&source.SlaveSourceStatus,&source.MasterServer,&source.MasterServerHostInfo,&source.MasterServerStatus,&source.SelectMasterTime,&source.SlaveSource,&source.SlaveSourceStatus,&source.SlaveServers,&source.SlaveServerHostInfo,&source.SlaveServerStatus)
+//	&dataserver.servername,&dataserver.host,&dataserver.port,&dataserver.username,&dataserver.status,&dataserver.master_online_status,&dataserver.master_backup,&dataserver.remote_user,&dataserver.remote_port,&dataserver.max_needed_conn_max_mysql_conn,&dataserver.master_priority
+//		fmt.Println(source.Name+" "+source.MasterServerHostInfo+" "+source.SlaveSourceStatus)
+		if source.SlaveSourceStatus == "Working" {
+			count = count + 1
+		}
+	}
+	return count
+}
+
+func FetchDataserversInfo (DB *sql.DB) bool {
+	fmt.Println("search status from dataservers")
+	rows,err := DB.Query("dbscale show datasource type = replication where SlaveSourceStatus like  'Working';")
+	var result = false
+//	var count = 0
+	if err != nil{
+		fmt.Println(err)
+	}
+	defer 	rows.Close()
+	
+	for rows.Next(){
+		var source Datasource
+		rows.Scan(&source.Name,&source.Type,&source.SourceStatus,&source.LoadBalanceStrategy,&source.MasterSource,&source.SlaveSourceStatus,&source.MasterServer,&source.MasterServerHostInfo,&source.MasterServerStatus,&source.SelectMasterTime,&source.SlaveSource,&source.SlaveSourceStatus,&source.SlaveServers,&source.SlaveServerHostInfo,&source.SlaveServerStatus)
+//	&dataserver.servername,&dataserver.host,&dataserver.port,&dataserver.username,&dataserver.status,&dataserver.master_online_status,&dataserver.master_backup,&dataserver.remote_user,&dataserver.remote_port,&dataserver.max_needed_conn_max_mysql_conn,&dataserver.master_priority
+//		fmt.Println(source.Name+" "+source.MasterServerHostInfo+" "+source.SlaveSourceStatus)
+		if source.SlaveSourceStatus == "Working" {
 			result = true
 		}else{
 			result = false
 		}
+	}
 	return result
 }
+
+//获取要断网的master节点ip
+func IfdownHost(DB *sql.DB,port string,role string) string {
+	rows,err := DB.Query("dbscale show dataservers where port like '%"+port+"%';")
+	//根据端口号信息，得到某一个元素的所有主从节点列表（在不同节点上，相同端口对应同一个角色）
+	var ifdown string
+	if err != nil{
+		fmt.Println(err)
+	}
+	defer 	rows.Close()
+	
+	for rows.Next(){
+		var dataserver Dataservers
+		rows.Scan(&dataserver.servername,&dataserver.host,&dataserver.port,&dataserver.username,&dataserver.status,&dataserver.master_online_status,&dataserver.master_backup,&dataserver.remote_user,&dataserver.remote_port,&dataserver.max_needed_conn_max_mysql_conn,&dataserver.master_priority)
+//		fmt.Println("servername: "+dataserver.servername+" host: "+dataserver.host+" port: "+dataserver.port+"  username: "+dataserver.username+" status: "+dataserver.status+" master_online_status: "+dataserver.master_online_status)
+//		if ((dataserver.port == port)&&(dataserver.master_online_status == 'Master_Online')){
+//			killed = dataserver.host
+//		}
+		if role == "master" {
+			if ((dataserver.port == port)&&(dataserver.master_online_status == "Master_Online")) {
+				ifdown = dataserver.host
+			}
+		}
+		if role == "slave" {
+			if ((dataserver.port == port)&&(dataserver.master_online_status == "Not_A_Master")) { //无论是几个slave，最后返回的肯定是最后一个slave的host.
+				ifdown = dataserver.host
+			}
+		}
+		
+		//当前方法是要根据输入的端口号同时对应的master_online_status，获得master角色的host信息
+	}
+	return ifdown
+}
+
 
 func Killdataserversmaster (DB *sql.DB,port string) string {
 	rows,err := DB.Query("dbscale show dataservers where status like '%normal%';")
@@ -119,12 +219,12 @@ func DisableServerInfo (DB *sql.DB,servername string,rolename string) []string {
 		var dataserver Dataservers
 		rows.Scan(&dataserver.servername,&dataserver.host,&dataserver.port,&dataserver.username,&dataserver.status,&dataserver.master_online_status,&dataserver.master_backup,&dataserver.remote_user,&dataserver.remote_port,&dataserver.max_needed_conn_max_mysql_conn,&dataserver.master_priority)
 //		disablelist = append(disablelist,dataserver.servername+","+dataserver.host+","+dataserver.port+","+dataserver.master_online_status)
-//		if (rolename == "master")&&(ataserver.master_online_status == "Master_Online") {
-//			disableInfo = append(disableInfo,dataserver.servername+","+dataserver.host+","+dataserver.port)
-//		}
-//		if (rolename == "slave")&&(ataserver.master_online_status == "Not_A_Master") {
-//			disableInfo = append(disableInfo,dataserver.servername+","+dataserver.host+","+dataserver.port)
-//		}
+		if (rolename == "master")&&(dataserver.master_online_status == "Master_Online") {
+			disableInfo = append(disableInfo,dataserver.servername+","+dataserver.host+","+dataserver.port)
+		}
+		if (rolename == "slave")&&(dataserver.master_online_status == "Not_A_Master") {
+			disableInfo = append(disableInfo,dataserver.servername+","+dataserver.host+","+dataserver.port)
+		}
 		
 	}
 	return disableInfo

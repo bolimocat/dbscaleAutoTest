@@ -1,0 +1,40 @@
+create database testdb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+use testdb
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+CREATE TABLE testdb.tb_base(a int,b varchar(4));
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+insert into testdb.tb_base values(1,a);
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+select * from testdb.tb_base;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+a	b
+1	1
+
+
+CREATE TEMPORARY TABLE testdb.tb_charset(c1 int primary key,c2 varchar(2)) character set "gb2312";show full columns from testdb.tb_charset;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Field	Type	Collation	Null	Key	Default	Extra	Privileges	Comment
+c1	int(11)	NULL	NO	PRI	NULL		select,insert,update,references	
+c2	varchar(2)	gb2312_chinese_ci	YES		NULL		select,insert,update,references	
+
+
+CREATE TEMPORARY TABLE testdb.tb_collate(c1 int primary key,c2 varchar(2)) character set "utf8mb4" collate  "utf8mb4_unicode_ci"; show full columns from testdb.tb_collate;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Field	Type	Collation	Null	Key	Default	Extra	Privileges	Comment
+c1	int(11)	NULL	NO	PRI	NULL		select,insert,update,references	
+c2	varchar(2)	utf8mb4_unicode_ci	YES		NULL		select,insert,update,references	
+
+
+drop database testdb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+

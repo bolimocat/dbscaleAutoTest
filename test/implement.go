@@ -22,11 +22,32 @@ func Testcase(expectfile []string,currentfile []string) []string{
 		currentlist = append(currentlist,"line:"+strconv.Itoa(index+1)+","+value)
 	}
 	
-	for i:=0;i<len(expectlist);i++ {
+	if len(expectlist) == len(currentlist) {
+		for i:=0;i<len(expectlist);i++ {
 		if strings.Split(currentlist[i], ",")[1] != strings.Split(expectlist[i], ",")[1] {
 			errlist = append(errlist,"current:[ "+currentlist[i]+" ]\nexpect: [ "+expectlist[i]+" ]")
+			}
+		}
 	}
+	
+	if len(expectlist) >= len(currentlist) {
+		for i:=0;i<len(currentlist);i++ {
+		if strings.Split(currentlist[i], ",")[1] != strings.Split(expectlist[i], ",")[1] {
+			errlist = append(errlist,"current:[ "+currentlist[i]+" ]\nexpect: [ "+expectlist[i]+" ]")
+			}
+		}
 	}
+	
+	if len(expectlist) <= len(currentlist) {
+		for i:=0;i<len(expectlist);i++ {
+		if strings.Split(currentlist[i], ",")[1] != strings.Split(expectlist[i], ",")[1] {
+			errlist = append(errlist,"current:[ "+currentlist[i]+" ]\nexpect: [ "+expectlist[i]+" ]")
+			}
+		}
+	}
+	
+	
+	
 	return errlist
 	
 }

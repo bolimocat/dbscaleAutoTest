@@ -1,0 +1,1 @@
+insert into testdb.tb2 (id,name,age) values (1,"Tana111","5"),(2,"Tana222","5"),(3,"Tana333","5"),(4,"Tana444","5");

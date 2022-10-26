@@ -1,0 +1,66 @@
+create database `test-t-db1`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+dbscale dynamic add hash_type partition_scheme "hash_test" partition="part_0" partition="part_1" partition="part_2" is_shard shard_nums 15;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+dbscale dynamic add partition_table dataspace `test-t-db1`.table2 partition_key="id" partition_scheme="hash_test";
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+create table `test-t-db1`.table2 (id int primary key, name varchar(10), time TIMESTAMP);
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+dbscale show table location `test-t-db1`.table2;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+dbscale check table `test-t-db1`.table2;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+drop table  `test-t-db1`.table2;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+drop database `test-t-db1`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+dbscale dynamic remove table `test-t-db1`.table2;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+dbscale dynamic remove partition_scheme hash_test;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
+dbscale dynamic remove schema `test-t-db1`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+mysql: [ERROR] Unknown suffix '.' used for variable 'port' (value '192.168.2.21')
+mysql: [ERROR] mysql: Error while setting value '192.168.2.21' to 'port'
+
+
