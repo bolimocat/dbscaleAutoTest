@@ -1,0 +1,14 @@
+#操作用户
+USER=greatdb
+PASSWORD=abc123
+ROOTPASS=abc123
+#控制节点数量，控制节点所在主机。
+DBSCALE_HOST=192.168.2.21,192.168.2.22,192.168.2.24
+ALL_HOST=192.168.2.21,192.168.2.22,192.168.2.23,192.168.2.24
+#节点端测试运行根目录
+TESTROOT=/home/greatdb
+#节点端测试目录
+TESTPATH=/dbscaleAutoTest
+DBSCALEPORT=16310
+DBSCALEPASS=123456
+GEPATH=/home/greatdb/ge

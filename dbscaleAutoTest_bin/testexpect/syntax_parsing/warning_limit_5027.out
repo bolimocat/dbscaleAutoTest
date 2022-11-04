@@ -1,0 +1,40 @@
+create database testdb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+CREATE TABLE testdb.tb1 (id int(11) NOT NULL,name varchar(6) DEFAULT NULL,age int(11) DEFAULT NULL,level varchar(8) NOT NULL,PRIMARY KEY (id),UNIQUE KEY name (name)) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+desc testdb.tb1;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Field	Type	Null	Key	Default	Extra
+id	int(11)	NO	PRI	NULL	
+name	varchar(6)	YES	UNI	NULL	
+age	int(11)	YES		NULL	
+level	varchar(8)	NO		NULL	
+
+
+set sql_mode = "";insert into testdb.tb1 (id,name,age) values (1,"Tana111","5"),(2,"Tana222","5"),(3,"Tana333","5"),(4,"Tana444","5");show warnings;show warnings limit 3;show warnings limit 2,4;show warnings limit -2;show warnings limit a;show warnings limit 2,1;show warnings limit a,b;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '-2' at line 1
+Level	Code	Message
+Warning	1265	Data truncated for column 'name' at row 1
+Warning	1364	Field 'level' doesn't have a default value
+Warning	1265	Data truncated for column 'name' at row 2
+Warning	1265	Data truncated for column 'name' at row 3
+Warning	1265	Data truncated for column 'name' at row 4
+Level	Code	Message
+Warning	1265	Data truncated for column 'name' at row 1
+Warning	1364	Field 'level' doesn't have a default value
+Warning	1265	Data truncated for column 'name' at row 2
+Level	Code	Message
+Warning	1265	Data truncated for column 'name' at row 2
+Warning	1265	Data truncated for column 'name' at row 3
+Warning	1265	Data truncated for column 'name' at row 4
+
+
+drop database testdb;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+

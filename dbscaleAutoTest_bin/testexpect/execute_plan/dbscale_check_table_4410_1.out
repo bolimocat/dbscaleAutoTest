@@ -1,0 +1,72 @@
+create database `test-t-db2`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+dbscale dynamic add hash_type partition_scheme "hash_test" partition="part_0" partition="part_1" partition="part_2" is_shard shard_nums 15;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+dbscale dynamic add partition_table dataspace `test-t-db2`.`test-t5` partition_key="id" partition_scheme="hash_test";
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+create table `test-t-db2`.`test-t5` (id int primary key, name varchar(10), time TIMESTAMP);
+mysql: [Warning] Using a password on the command line interface can be insecure.
+
+
+dbscale show table location `test-t-db2`.`test-t5`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Server_name	Server_ip	Server_port	PartitionScheme	local_db_name	slave_name	slave_ip	slave_port
+part_2_0	192.168.2.21	16316	hash_test	test-t-db2	part_2_3	192.168.2.24	16316
+ 	 	 	 	 	part_2_2	192.168.2.23	16316
+ 	 	 	 	 	part_2_1	192.168.2.22	16316
+part_1_0	192.168.2.21	16315	hash_test	test-t-db2	part_1_3	192.168.2.24	16315
+ 	 	 	 	 	part_1_2	192.168.2.23	16315
+ 	 	 	 	 	part_1_1	192.168.2.22	16315
+part_0_0	192.168.2.21	16314	hash_test	test-t-db2	part_0_3	192.168.2.24	16314
+ 	 	 	 	 	part_0_2	192.168.2.23	16314
+ 	 	 	 	 	part_0_1	192.168.2.22	16314
+part_2_0	192.168.2.21	16316	hash_test	test-t-db2_dbscale_1_3	part_2_3	192.168.2.24	16316
+ 	 	 	 	 	part_2_2	192.168.2.23	16316
+ 	 	 	 	 	part_2_1	192.168.2.22	16316
+part_1_0	192.168.2.21	16315	hash_test	test-t-db2_dbscale_1_4	part_1_3	192.168.2.24	16315
+ 	 	 	 	 	part_1_2	192.168.2.23	16315
+ 	 	 	 	 	part_1_1	192.168.2.22	16315
+part_0_0	192.168.2.21	16314	hash_test	test-t-db2_dbscale_1_5	part_0_3	192.168.2.24	16314
+ 	 	 	 	 	part_0_2	192.168.2.23	16314
+ 	 	 	 	 	part_0_1	192.168.2.22	16314
+part_2_0	192.168.2.21	16316	hash_test	test-t-db2_dbscale_2_6	part_2_3	192.168.2.24	16316
+ 	 	 	 	 	part_2_2	192.168.2.23	16316
+ 	 	 	 	 	part_2_1	192.168.2.22	16316
+part_1_0	192.168.2.21	16315	hash_test	test-t-db2_dbscale_2_7	part_1_3	192.168.2.24	16315
+ 	 	 	 	 	part_1_2	192.168.2.23	16315
+ 	 	 	 	 	part_1_1	192.168.2.22	16315
+part_0_0	192.168.2.21	16314	hash_test	test-t-db2_dbscale_2_8	part_0_3	192.168.2.24	16314
+ 	 	 	 	 	part_0_2	192.168.2.23	16314
+ 	 	 	 	 	part_0_1	192.168.2.22	16314
+part_2_0	192.168.2.21	16316	hash_test	test-t-db2_dbscale_3_9	part_2_3	192.168.2.24	16316
+ 	 	 	 	 	part_2_2	192.168.2.23	16316
+ 	 	 	 	 	part_2_1	192.168.2.22	16316
+part_1_0	192.168.2.21	16315	hash_test	test-t-db2_dbscale_3_10	part_1_3	192.168.2.24	16315
+ 	 	 	 	 	part_1_2	192.168.2.23	16315
+ 	 	 	 	 	part_1_1	192.168.2.22	16315
+part_0_0	192.168.2.21	16314	hash_test	test-t-db2_dbscale_3_11	part_0_3	192.168.2.24	16314
+ 	 	 	 	 	part_0_2	192.168.2.23	16314
+ 	 	 	 	 	part_0_1	192.168.2.22	16314
+part_2_0	192.168.2.21	16316	hash_test	test-t-db2_dbscale_4_12	part_2_3	192.168.2.24	16316
+ 	 	 	 	 	part_2_2	192.168.2.23	16316
+ 	 	 	 	 	part_2_1	192.168.2.22	16316
+part_1_0	192.168.2.21	16315	hash_test	test-t-db2_dbscale_4_13	part_1_3	192.168.2.24	16315
+ 	 	 	 	 	part_1_2	192.168.2.23	16315
+ 	 	 	 	 	part_1_1	192.168.2.22	16315
+part_0_0	192.168.2.21	16314	hash_test	test-t-db2_dbscale_4_14	part_0_3	192.168.2.24	16314
+ 	 	 	 	 	part_0_2	192.168.2.23	16314
+ 	 	 	 	 	part_0_1	192.168.2.22	16314
+
+
+dbscale check table `test-t-db2`.`test-t5`;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+TABLE_NAME	CHECK_RESULT
+test-t-db2.test-t5	OK
+
+
